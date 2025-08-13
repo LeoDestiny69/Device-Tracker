@@ -8,5 +8,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/static/', // เพิ่มบรรทัดนี้
+  base: '/static/',
+  build: {
+    outDir: 'dist',
+  }
 })
