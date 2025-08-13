@@ -1,0 +1,22 @@
+# Environments
+.env
+myenv/
+
+# Frontend
+/device_tracker_frontend/node_modules/
+/device_tracker_frontend/dist/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+staticfiles/
+*.log
+db.sqlite3
+
+# IDEs
+.vscode/
+.idea/
