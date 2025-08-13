@@ -18,7 +18,7 @@ class Asset(models.Model):
     code = models.CharField(max_length=50, unique=True)
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     name = models.CharField(max_length=255)
-    purchase_date = models.DateField()
+    purchase_date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     detail = models.TextField(blank=True)

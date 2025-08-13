@@ -99,7 +99,7 @@ export default function DeviceFormUI({
             Purchase Date
           </label>
           <input
-            type="date"
+            type="datetime-local"
             name="purchase_date"
             value={form.purchase_date}
             onChange={onChange}
