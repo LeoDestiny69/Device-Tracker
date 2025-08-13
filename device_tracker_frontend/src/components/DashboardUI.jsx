@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function DashboardUI({ devices, filters, setFilters, onDelete }) {
+export default function DashboardUI({ devices, filters, setFilters, onDelete, onLogout }) {
   // ฟังก์ชันฟอร์แมตวันที่
   const formatDateTime = (dateString) => {
     if (!dateString) return "-";
@@ -18,12 +18,20 @@ export default function DashboardUI({ devices, filters, setFilters, onDelete }) 
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
           Device Inventory
         </h1>
-        <Link
-          to="/devices/new"
-          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 sm:px-5 py-2 rounded-lg shadow-lg transition-all transform hover:scale-105 active:scale-95 text-sm sm:text-base"
-        >
-          Add Device
-        </Link>
+        <div className="flex gap-3">
+          <Link
+            to="/devices/new"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 sm:px-5 py-2 rounded-lg shadow-lg transition-all transform hover:scale-105 active:scale-95 text-sm sm:text-base"
+          >
+            Add Device
+          </Link>
+          <button
+            onClick={onLogout}
+            className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 sm:px-5 py-2 rounded-lg shadow-lg transition-all transform hover:scale-105 active:scale-95 text-sm sm:text-base"
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Filter */}
