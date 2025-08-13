@@ -12,4 +12,6 @@ npm run build
 cd ..
 
 # Collect static files
+python device_tracker/manage.py makemigrations
+python device_tracker/manage.py migrate
 python device_tracker/manage.py collectstatic --no-input
