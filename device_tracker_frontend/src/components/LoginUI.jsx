@@ -1,11 +1,9 @@
-// LoginForm.jsx
 import { useEffect, useState } from "react";
 
 export default function LoginForm({ onSubmit }) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger animation after mount
     setLoaded(true);
   }, []);
 

@@ -9,7 +9,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* ถ้าใครเข้า "/" ให้ redirect ไป /login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
 
         <Route path="/login" element={<Login />} />

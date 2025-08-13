@@ -1,4 +1,3 @@
-// src/pages/DeviceForm.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeviceFormUI from "../components/DeviceFormUI";

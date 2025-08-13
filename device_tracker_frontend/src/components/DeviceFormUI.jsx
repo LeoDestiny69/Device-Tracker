@@ -1,4 +1,3 @@
-// src/components/DeviceFormUI.jsx
 import { motion } from "framer-motion";
 
 export default function DeviceFormUI({

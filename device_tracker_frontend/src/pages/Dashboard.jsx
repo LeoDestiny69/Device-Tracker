@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
 import api from "../services/api";
-import DashboardUI from "../components/DashboardUI"; // Presentation
+import DashboardUI from "../components/DashboardUI"; 
 
 export default function Dashboard() {
   const [devices, setDevices] = useState([]);
   const [filters, setFilters] = useState({ type: "", code: "", name: "" });
+  const navigate = useNavigate(); 
 
   const fetchData = async () => {
     try {
@@ -32,12 +34,18 @@ export default function Dashboard() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/login"); 
+  };
+
   return (
     <DashboardUI
       devices={devices}
       filters={filters}
       setFilters={setFilters}
       onDelete={handleDelete}
+      onLogout={handleLogout} 
     />
   );
 }
