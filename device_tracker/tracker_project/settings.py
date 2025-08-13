@@ -5,6 +5,7 @@ import dj_database_url
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -79,6 +80,7 @@ WSGI_APPLICATION = "tracker_project.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
+        default="mysql://user:password@localhost:3306/asset_db",
         conn_max_age=600,
         conn_health_checks=True,
     )
