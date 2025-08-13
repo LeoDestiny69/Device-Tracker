@@ -60,7 +60,7 @@ ROOT_URLCONF = "tracker_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR.parent / "device_tracker_frontend" / "dist"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
