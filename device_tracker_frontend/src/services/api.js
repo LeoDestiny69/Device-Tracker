@@ -19,7 +19,6 @@ api.interceptors.response.use(
 
       if (refresh) {
         try {
-          // ใช้ default axios เพื่อเลี่ยง interceptor
           const { data } = await axios.post("/api/token/refresh/", { refresh });
           localStorage.setItem("access_token", data.access);
           originalRequest.headers.Authorization = `Bearer ${data.access}`;
