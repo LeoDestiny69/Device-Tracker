@@ -17,16 +17,24 @@ class AssetViewSet(viewsets.ModelViewSet):
         created_date = self.request.query_params.get('created_date')  
 
         if code:
-            queryset = queryset.filter(code__icontains=code)
+            try:
+                code_int = int(code)
+                queryset = queryset.filter(code=code_int)
+            except ValueError:
+                pass  # ถ้าค่าไม่ใช่เลข ข้ามไปเลย
+
         if type_param:
             queryset = queryset.filter(type__icontains=type_param)
+
         if name:
             queryset = queryset.filter(name__icontains=name)
+
         if purchase_date:
             parsed_date = parse_date(purchase_date)
             if parsed_date:
                 queryset = queryset.filter(purchase_date__date=parsed_date)
-        if created_date:  
+
+        if created_date:
             parsed_date = parse_date(created_date)
             if parsed_date:
                 queryset = queryset.filter(created_at__date=parsed_date)
