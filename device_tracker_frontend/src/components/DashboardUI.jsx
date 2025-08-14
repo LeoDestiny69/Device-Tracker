@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function DashboardUI({ devices, filters, setFilters, onDelete, onLogout }) {
+export default function DashboardUI({
+  devices,
+  filters,
+  setFilters,
+  onDelete,
+  onLogout,
+}) {
   // ฟังก์ชันฟอร์แมตวันที่
   const formatDateTime = (dateString) => {
     if (!dateString) return "-";
@@ -35,36 +41,40 @@ export default function DashboardUI({ devices, filters, setFilters, onDelete, on
       </div>
 
       {/* Filter */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+      <div className="flex flex-wrap gap-3 mb-6">
         <input
           placeholder="Filter by Type"
-          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          className="flex-1 min-w-[150px] border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
           value={filters.type}
           onChange={(e) => setFilters({ ...filters, type: e.target.value })}
         />
         <input
           placeholder="Filter by Code"
-          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          className="flex-1 min-w-[150px] border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
           value={filters.code}
           onChange={(e) => setFilters({ ...filters, code: e.target.value })}
         />
         <input
           placeholder="Filter by Name"
-          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          className="flex-1 min-w-[150px] border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
           value={filters.name}
           onChange={(e) => setFilters({ ...filters, name: e.target.value })}
         />
         <input
-          placeholder="Filter by Purchase Date"
-          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          type="date"
+          className="flex-1 min-w-[150px] border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
           value={filters.purchase_date}
-          onChange={(e) => setFilters({ ...filters, purchase_date: e.target.value })}
+          onChange={(e) =>
+            setFilters({ ...filters, purchase_date: e.target.value })
+          }
         />
         <input
-          placeholder="Filter by Created Date"
-          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
-          value={filters.created_at}
-          onChange={(e) => setFilters({ ...filters, created_at: e.target.value })}
+          type="date"
+          className="flex-1 min-w-[150px] border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
+          value={filters.created_date}
+          onChange={(e) =>
+            setFilters({ ...filters, created_date: e.target.value })
+          }
         />
       </div>
 
@@ -127,14 +137,33 @@ export default function DashboardUI({ devices, filters, setFilters, onDelete, on
             key={d.id}
             className="bg-white rounded-lg shadow p-4 space-y-2 transition hover:shadow-md"
           >
-            <div><span className="font-semibold">Code:</span> {d.code}</div>
-            <div><span className="font-semibold">Type:</span> {d.type}</div>
-            <div><span className="font-semibold">Name:</span> {d.name}</div>
-            <div><span className="font-semibold">Status:</span> {d.status}</div>
-            <div><span className="font-semibold">Purchase Date:</span> {formatDateTime(d.purchase_date)}</div>
-            <div><span className="font-semibold">Created At:</span> {formatDateTime(d.created_at)}</div>
-            <div><span className="font-semibold">Updated At:</span> {formatDateTime(d.updated_at)}</div>
-            <div><span className="font-semibold">Detail:</span> {d.detail || "-"}</div>
+            <div>
+              <span className="font-semibold">Code:</span> {d.code}
+            </div>
+            <div>
+              <span className="font-semibold">Type:</span> {d.type}
+            </div>
+            <div>
+              <span className="font-semibold">Name:</span> {d.name}
+            </div>
+            <div>
+              <span className="font-semibold">Status:</span> {d.status}
+            </div>
+            <div>
+              <span className="font-semibold">Purchase Date:</span>{" "}
+              {formatDateTime(d.purchase_date)}
+            </div>
+            <div>
+              <span className="font-semibold">Created At:</span>{" "}
+              {formatDateTime(d.created_at)}
+            </div>
+            <div>
+              <span className="font-semibold">Updated At:</span>{" "}
+              {formatDateTime(d.updated_at)}
+            </div>
+            <div>
+              <span className="font-semibold">Detail:</span> {d.detail || "-"}
+            </div>
             <div className="flex gap-2 pt-2">
               <Link
                 to={`/devices/${d.id}/edit`}
