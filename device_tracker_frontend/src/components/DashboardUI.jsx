@@ -54,6 +54,18 @@ export default function DashboardUI({ devices, filters, setFilters, onDelete, on
           value={filters.name}
           onChange={(e) => setFilters({ ...filters, name: e.target.value })}
         />
+        <input
+          placeholder="Filter by Purchase Date"
+          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          value={filters.purchase_date}
+          onChange={(e) => setFilters({ ...filters, purchase_date: e.target.value })}
+        />
+        <input
+          placeholder="Filter by Created Date"
+          className="border border-gray-300 rounded-lg p-2 sm:p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm sm:text-base"
+          value={filters.created_at}
+          onChange={(e) => setFilters({ ...filters, created_at: e.target.value })}
+        />
       </div>
 
       {/* Desktop Table */}

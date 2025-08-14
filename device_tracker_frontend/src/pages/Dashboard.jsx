@@ -5,7 +5,7 @@ import DashboardUI from "../components/DashboardUI";
 
 export default function Dashboard() {
   const [devices, setDevices] = useState([]);
-  const [filters, setFilters] = useState({ type: "", code: "", name: "" });
+  const [filters, setFilters] = useState({ type: "", code: "", name: "", purchase_date: "", created_date: ""});
   const navigate = useNavigate(); 
 
   const fetchData = async () => {
