@@ -1,4 +1,5 @@
 from rest_framework import viewsets, permissions
+from django.utils.dateparse import parse_date
 from .models import Asset
 from .serializers import AssetSerializer
 
@@ -12,7 +13,8 @@ class AssetViewSet(viewsets.ModelViewSet):
         code = self.request.query_params.get('code')
         type_param = self.request.query_params.get('type')
         name = self.request.query_params.get('name')
-        date = self.request.query_params.get('date')
+        purchase_date = self.request.query_params.get('purchase_date')
+        created_date = self.request.query_params.get('created_date')  
 
         if code:
             queryset = queryset.filter(code__icontains=code)
@@ -20,7 +22,13 @@ class AssetViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(type__icontains=type_param)
         if name:
             queryset = queryset.filter(name__icontains=name)
-        if date:
-            queryset = queryset.filter(purchase_date=date)
+        if purchase_date:
+            parsed_date = parse_date(purchase_date)
+            if parsed_date:
+                queryset = queryset.filter(purchase_date__date=parsed_date)
+        if created_date:  
+            parsed_date = parse_date(created_date)
+            if parsed_date:
+                queryset = queryset.filter(created_at__date=parsed_date)
 
         return queryset
