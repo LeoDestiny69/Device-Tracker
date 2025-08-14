@@ -5,6 +5,13 @@ const api = axios.create({ baseURL: "/" });
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("access_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
+
+  if (config.params) {
+    config.params = Object.fromEntries(
+      Object.entries(config.params).filter(([_, v]) => v !== "" && v != null)
+    );
+  }
+
   return config;
 });
 
